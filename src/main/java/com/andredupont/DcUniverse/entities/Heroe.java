@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,23 +14,21 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "characters")
-public class Character {
+@Table(name = "heroe")
+public class Heroe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "fullName")
-    private String fullName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "aka")
-    private String aka;
+    @Column(name = "abilities", nullable = false)
+    private List<String> abilities;
 
-    @Column(name = "age")
-    private Integer age;
-
-    @Column(name = "profession")
-    private String profession;
+    @OneToOne
+    @JoinColumn(name = "person_id", referencedColumnName = "id", nullable = true)
+    private Person person;
 }

@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "organizations")
+@Table(name = "organization")
 public class Organization {
 
     @Id
@@ -21,6 +21,15 @@ public class Organization {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "description", nullable = true)
+    private String description;
+
+    @Column(name = "number_of_heroes", nullable = false)
+    private Integer numberOfHeroes;
+
+    @Column(name = "still_active", nullable = false)
+    private Boolean stillActive;
 }

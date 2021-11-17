@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "cities")
+@Table(name = "city")
 public class City {
 
     @Id
@@ -21,9 +21,6 @@ public class City {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-
-    @ManyToOne
-    private Character character;
 }

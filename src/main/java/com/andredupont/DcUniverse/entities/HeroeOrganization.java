@@ -13,17 +13,19 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "heroe_organization")
+public class HeroeOrganization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "heroe_id")
+    private Heroe heroe;
 
     @ManyToOne
-    private Character character;
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 }

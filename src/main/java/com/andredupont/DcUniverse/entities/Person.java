@@ -13,19 +13,24 @@ import javax.persistence.*;
 @Setter
 
 @Entity
-@Table(name = "charactersOrganizations")
-public class CharacterInOrganization {
+@Table(name = "person")
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "name")
+    @Column(name = "id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "characterId", referencedColumnName = "id")
-    private Character character;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "age", nullable = true)
+    private Integer age;
 
     @ManyToOne
-    @JoinColumn(name = "roleId", referencedColumnName = "id")
-    private Organization organization;
+    @JoinColumn
+    private City city;
 }
