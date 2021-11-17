@@ -31,6 +31,6 @@ public class Person {
     private Integer age;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 }

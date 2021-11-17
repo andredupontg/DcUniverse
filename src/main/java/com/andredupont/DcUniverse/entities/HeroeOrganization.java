@@ -22,10 +22,10 @@ public class HeroeOrganization {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "heroe_id")
+    @JoinColumn(name = "heroe_id", referencedColumnName = "id")
     private Heroe heroe;
 
     @ManyToOne
-    @JoinColumn(name = "organization_id")
+    @JoinColumn(name = "organization_id", referencedColumnName = "id")
     private Organization organization;
 }
