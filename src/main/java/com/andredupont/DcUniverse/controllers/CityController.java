@@ -30,9 +30,40 @@ public class CityController {
         return new ResponseEntity<>(cityService.getCityById(cityId), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{cityName}")
+    public ResponseEntity<City> getCityByName(@PathVariable(name = "cityName") String cityName){
+        log.info("Se está intentando obtener la ciudad con el nombre {}" + cityName);
+        return new ResponseEntity<>(cityService.getCityByName(cityName), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/names")
+    public ResponseEntity<List<City>> getNames(){
+        log.info("Se está intentando obtener todos los nombres de las ciudades");
+        return new ResponseEntity<>(cityService.getNames(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/names/{cityCharacter}")
+    public ResponseEntity<List<City>> findNamesLike(@PathVariable(name = "cityCharacter") Character cityCharacter){
+        log.info("Se está intentando obtener todos los nombres de las ciudades que empiezen con la letra {}" + cityCharacter);
+        return new ResponseEntity<>(cityService.findNamesLike(cityCharacter), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<City> createCity(@RequestBody City city){
         log.info("Se está intentando crear la ciudad");
         return new ResponseEntity<>(cityService.createCity(city), HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/{cityId}")
+    public ResponseEntity<City> updateCity(@PathVariable(value = "cityId") Integer cityId, @RequestBody City city){
+        log.info("Se está intentando actualizar la ciudad");
+        return new ResponseEntity<>(cityService.updateCity(cityId, city), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{cityId}")
+    public ResponseEntity<Void> deleteCity(@PathVariable(value = "cityId") Integer cityId){
+        log.info("Se está intentando eliminar la ciudad");
+        cityService.deleteCity(cityId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
