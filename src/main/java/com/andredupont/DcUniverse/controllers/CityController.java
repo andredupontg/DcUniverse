@@ -37,15 +37,15 @@ public class CityController {
     }
 
     @GetMapping(value = "/names")
-    public ResponseEntity<List<City>> getNames(){
+    public ResponseEntity<List<City>> getAllCityNames(){
         log.info("Se está intentando obtener todos los nombres de las ciudades");
-        return new ResponseEntity<>(cityService.getNames(), HttpStatus.OK);
+        return new ResponseEntity<>(cityService.getAllCityNames(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/names/{cityCharacter}")
-    public ResponseEntity<List<City>> findNamesLike(@PathVariable(name = "cityCharacter") Character cityCharacter){
+    public ResponseEntity<List<City>> getCityNamesLike(@PathVariable(name = "cityCharacter") Character cityCharacter){
         log.info("Se está intentando obtener todos los nombres de las ciudades que empiezen con la letra {}" + cityCharacter);
-        return new ResponseEntity<>(cityService.findNamesLike(cityCharacter), HttpStatus.OK);
+        return new ResponseEntity<>(cityService.getCityNamesLike(cityCharacter), HttpStatus.OK);
     }
 
     @PostMapping

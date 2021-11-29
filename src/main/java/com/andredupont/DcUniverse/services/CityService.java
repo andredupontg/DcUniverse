@@ -21,18 +21,20 @@ public class CityService {
     }
 
     public City getCityById(Integer cityId){
-        return cityRepository.findById(cityId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("City with id %d does not exist", cityId)));
+        return cityRepository.findById(cityId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("City with id %d does not exist", cityId)));
     }
 
     public City getCityByName(String cityName){
-        return cityRepository.findByName(cityName).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("City with name %s does not exist", cityName)));
+        return cityRepository.findByName(cityName)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("City with name %s does not exist", cityName)));
     }
 
-    public List<City> getNames(){
+    public List<City> getAllCityNames(){
         return cityRepository.findNames();
     }
 
-    public List<City> findNamesLike(Character cityCharacter){
+    public List<City> getCityNamesLike(Character cityCharacter){
         return cityRepository.findNamesLike(cityCharacter);
     }
 
